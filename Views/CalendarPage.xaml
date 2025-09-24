@@ -43,7 +43,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Border Margin="0,5"
-                            Padding="20"
+                            Padding="10,8"
                             BackgroundColor="White"
                             Stroke="#E0E0E0"
                             StrokeThickness="1">
@@ -57,31 +57,31 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
-                            <HorizontalStackLayout Grid.Column="0" Spacing="10">
-                                <Label FontSize="24"
+                            <HorizontalStackLayout Grid.Column="0" Spacing="5">
+                                <Label FontSize="16"
                                        VerticalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{Binding TimeString}"
                                                   FontAttributes="Bold"
                                                   TextColor="#007AFF"
-                                                  FontSize="24" />
+                                                  FontSize="16" />
                                             <Span Text=" - "
                                                   TextColor="Gray"
-                                                  FontSize="24" />
+                                                  FontSize="16" />
                                             <Span Text="{Binding EndTimeString}"
                                                   FontAttributes="Bold"
                                                   TextColor="#007AFF"
-                                                  FontSize="24" />
+                                                  FontSize="16" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
                                 <Label Text="-"
-                                       FontSize="24"
+                                       FontSize="16"
                                        VerticalOptions="Center"
                                        TextColor="Gray" />
                                 <Label Text="{Binding ActivityType}"
-                                       FontSize="24"
+                                       FontSize="16"
                                        VerticalOptions="Center"
                                        TextColor="Gray" />
                             </HorizontalStackLayout>
@@ -90,8 +90,8 @@
                                     Text="Edit"
                                     BackgroundColor="#4CAF50"
                                     TextColor="White"
-                                    FontSize="18"
-                                    Padding="15,8"
+                                    FontSize="12"
+                                    Padding="6,4"
                                     CornerRadius="5"
                                     Clicked="OnFinishClicked"
                                     CommandParameter="{Binding}"
@@ -101,9 +101,9 @@
                                     Text="Delete"
                                     BackgroundColor="#FF3B30"
                                     TextColor="White"
-                                    FontSize="18"
-                                    Padding="15,8"
-                                    Margin="5,0,0,0"
+                                    FontSize="12"
+                                    Padding="6,4"
+                                    Margin="3,0,0,0"
                                     CornerRadius="5"
                                     Clicked="OnDeleteClicked"
                                     CommandParameter="{Binding}"
