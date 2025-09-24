@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="BabyTime.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:BabyTime"
+    xmlns:views="clr-namespace:BabyTime.Views"
+    Title="BabyTime"
+    Shell.TabBarBackgroundColor="White"
+    Shell.TabBarTitleColor="#007AFF"
+    Shell.TabBarUnselectedColor="Gray"
+    Shell.NavBarHasShadow="True">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="White" />
+                <Setter Property="Shell.TabBarTitleColor" Value="#007AFF" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="Gray" />
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <TabBar>
+        <Tab Title="Input">
+            <ShellContent ContentTemplate="{DataTemplate views:InputPage}" />
+        </Tab>
+        <Tab Title="Today">
+            <ShellContent ContentTemplate="{DataTemplate views:TodayPage}" />
+        </Tab>
+        <Tab Title="Calendar">
+            <ShellContent ContentTemplate="{DataTemplate views:CalendarPage}" />
+        </Tab>
+    </TabBar>
+
+</Shell>

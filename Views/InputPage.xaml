@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BabyTime.Views.InputPage"
+             Title="Input"
+             Shell.NavBarIsVisible="True">
+
+    <ContentPage.Resources>
+        <Style TargetType="Picker">
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="TitleColor" Value="Gray" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout Padding="20" Spacing="20">
+
+        <Label
+            Text="Select Time"
+            FontSize="24"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            Margin="0,20,0,0" />
+
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+            <Border Stroke="#007AFF"
+                    StrokeThickness="2"
+                    BackgroundColor="White"
+                    Padding="10">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <VerticalStackLayout>
+                    <Label Text="Hour"
+                           HorizontalOptions="Center"
+                           FontSize="12"
+                           TextColor="Gray" />
+                    <Picker x:Name="HourPicker"
+                            WidthRequest="80"
+                            FontSize="24"
+                            TextColor="Black"
+                            HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label Text=":"
+                   FontSize="24"
+                   VerticalOptions="Center" />
+
+            <Border Stroke="#007AFF"
+                    StrokeThickness="2"
+                    BackgroundColor="White"
+                    Padding="10">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <VerticalStackLayout>
+                    <Label Text="Minutes"
+                           HorizontalOptions="Center"
+                           FontSize="12"
+                           TextColor="Gray" />
+                    <Picker x:Name="MinutePicker"
+                            WidthRequest="80"
+                            FontSize="24"
+                            TextColor="Black"
+                            HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Border>
+        </HorizontalStackLayout>
+
+        <Label
+            Text="Select Activity"
+            FontSize="20"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            Margin="0,20,0,0" />
+
+        <Border Stroke="#007AFF"
+                StrokeThickness="2"
+                BackgroundColor="White"
+                Padding="5"
+                Margin="20,0">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10"/>
+            </Border.StrokeShape>
+            <Picker x:Name="ActivityPicker"
+                    FontSize="18"
+                    TextColor="Black"
+                    SelectedIndex="0"
+                    HorizontalOptions="FillAndExpand">
+                <Picker.Items>
+                    <x:String>Eat</x:String>
+                    <x:String>Sleep</x:String>
+                </Picker.Items>
+            </Picker>
+        </Border>
+
+        <Button x:Name="AddButton"
+                Text="Add"
+                FontSize="18"
+                FontAttributes="Bold"
+                BackgroundColor="#007AFF"
+                TextColor="White"
+                CornerRadius="10"
+                HeightRequest="50"
+                Margin="20,30,20,0"
+                Clicked="OnAddButtonClicked" />
+
+        <Border x:Name="SuccessBorder"
+                BackgroundColor="#4CAF50"
+                Padding="15,10"
+                IsVisible="False"
+                HorizontalOptions="Center">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="5"/>
+            </Border.StrokeShape>
+            <Label Text="Success!"
+                   TextColor="White"
+                   FontSize="16"
+                   FontAttributes="Bold" />
+        </Border>
+
+    </VerticalStackLayout>
+
+</ContentPage>
