@@ -7,9 +7,30 @@
 
     <ContentPage.Resources>
         <Style TargetType="Picker">
-            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="TextColor" Value="#007AFF" />
             <Setter Property="TitleColor" Value="Gray" />
-            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="#007AFF" />
+                                <Setter Property="FontAttributes" Value="Bold" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Focused">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="#005ACC" />
+                                <Setter Property="FontAttributes" Value="Bold" />
+                                <Setter Property="BackgroundColor" Value="#E6F2FF" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
         </Style>
     </ContentPage.Resources>
 
@@ -37,9 +58,12 @@
                            TextColor="Gray" />
                     <Picker x:Name="HourPicker"
                             WidthRequest="80"
-                            FontSize="24"
-                            TextColor="Black"
-                            HorizontalOptions="Center" />
+                            FontSize="28"
+                            FontAttributes="Bold"
+                            TextColor="#007AFF"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" />
                 </VerticalStackLayout>
             </Border>
 
@@ -61,9 +85,12 @@
                            TextColor="Gray" />
                     <Picker x:Name="MinutePicker"
                             WidthRequest="80"
-                            FontSize="24"
-                            TextColor="Black"
-                            HorizontalOptions="Center" />
+                            FontSize="28"
+                            FontAttributes="Bold"
+                            TextColor="#007AFF"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" />
                 </VerticalStackLayout>
             </Border>
         </HorizontalStackLayout>

@@ -18,17 +18,22 @@
                 <Setter Property="Shell.TabBarTitleColor" Value="#007AFF" />
                 <Setter Property="Shell.TabBarUnselectedColor" Value="Gray" />
             </Style>
+            <Style TargetType="TabBar">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="White" />
+                <Setter Property="Shell.TabBarTitleColor" Value="#007AFF" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="Gray" />
+            </Style>
         </ResourceDictionary>
     </Shell.Resources>
 
     <TabBar>
-        <Tab Title="Input">
+        <Tab Title="INPUT">
             <ShellContent ContentTemplate="{DataTemplate views:InputPage}" />
         </Tab>
-        <Tab Title="Today">
+        <Tab Title="TODAY">
             <ShellContent ContentTemplate="{DataTemplate views:TodayPage}" />
         </Tab>
-        <Tab Title="Calendar">
+        <Tab Title="CALENDAR">
             <ShellContent ContentTemplate="{DataTemplate views:CalendarPage}" />
         </Tab>
     </TabBar>

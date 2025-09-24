@@ -14,6 +14,12 @@ namespace BabyTime.Views
             InitializePickers();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            UpdateTimeToNow();
+        }
+
         private void InitializePickers()
         {
             var hours = Enumerable.Range(0, 24).Select(h => h.ToString("00")).ToList();
@@ -22,13 +28,51 @@ namespace BabyTime.Views
             var minutes = Enumerable.Range(0, 60).Select(m => m.ToString("00")).ToList();
             MinutePicker.ItemsSource = minutes;
 
+            // Add focus event handlers to ensure selection is visible
+            HourPicker.Focused += OnPickerFocused;
+            MinutePicker.Focused += OnPickerFocused;
+
+            UpdateTimeToNow();
+            ActivityPicker.SelectedIndex = 0; // Default to "Eat"
+        }
+
+        private async void OnPickerFocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Picker picker)
+            {
+                // Small delay to ensure the picker is fully rendered
+                await Task.Delay(50);
+
+                // Ensure the selected item is properly set and visible
+                var currentIndex = picker.SelectedIndex;
+                if (currentIndex >= 0 && picker.ItemsSource != null && currentIndex < picker.ItemsSource.Count)
+                {
+                    picker.SelectedItem = picker.ItemsSource[currentIndex];
+                }
+            }
+        }
+
+        private void UpdateTimeToNow()
+        {
             try
             {
                 var sofiaTime = TimeZoneInfo.ConvertTime(DateTime.Now,
                     TimeZoneInfo.FindSystemTimeZoneById("FLE Standard Time"));
 
+                // Set the selected index which will automatically position the picker
                 HourPicker.SelectedIndex = sofiaTime.Hour;
                 MinutePicker.SelectedIndex = sofiaTime.Minute;
+
+                // Force update the selected item to ensure it's properly set
+                if (HourPicker.ItemsSource != null && HourPicker.ItemsSource.Count > sofiaTime.Hour)
+                {
+                    HourPicker.SelectedItem = HourPicker.ItemsSource[sofiaTime.Hour];
+                }
+
+                if (MinutePicker.ItemsSource != null && MinutePicker.ItemsSource.Count > sofiaTime.Minute)
+                {
+                    MinutePicker.SelectedItem = MinutePicker.ItemsSource[sofiaTime.Minute];
+                }
             }
             catch
             {
@@ -36,9 +80,18 @@ namespace BabyTime.Views
                 var currentTime = DateTime.Now;
                 HourPicker.SelectedIndex = currentTime.Hour;
                 MinutePicker.SelectedIndex = currentTime.Minute;
-            }
 
-            ActivityPicker.SelectedIndex = 0; // Default to "Eat"
+                // Force update the selected item to ensure it's properly set
+                if (HourPicker.ItemsSource != null && HourPicker.ItemsSource.Count > currentTime.Hour)
+                {
+                    HourPicker.SelectedItem = HourPicker.ItemsSource[currentTime.Hour];
+                }
+
+                if (MinutePicker.ItemsSource != null && MinutePicker.ItemsSource.Count > currentTime.Minute)
+                {
+                    MinutePicker.SelectedItem = MinutePicker.ItemsSource[currentTime.Minute];
+                }
+            }
         }
 
         private async void OnAddButtonClicked(object sender, EventArgs e)
@@ -78,7 +131,7 @@ namespace BabyTime.Views
             ShowSuccess();
 
             // Reset to current time for next entry
-            InitializePickers();
+            UpdateTimeToNow();
         }
 
         private async void ShowSuccess()
